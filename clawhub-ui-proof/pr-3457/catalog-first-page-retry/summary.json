@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "mode": "before-after",
+  "scenario": "catalog-first-page-failure-retry-recovery",
+  "provider": "local-convex-playwright",
+  "baseline": "faab45bace675a046b9b628dbc4581008ebbef96",
+  "candidate": "25db30d26c881fd7d9d60956ced543654d1be26b",
+  "lanes": [
+    {
+      "name": "baseline",
+      "steps": [
+        {
+          "name": "Base after a simulated first-page 503: false terminal empty state",
+          "slug": "first-page-503-false-empty",
+          "status": "failed",
+          "screenshot": "first-page-503-false-empty.png"
+        },
+        {
+          "name": "Base has no in-page recovery control",
+          "slug": "no-retry-control",
+          "status": "failed",
+          "screenshot": "no-retry-control.png"
+        }
+      ]
+    },
+    {
+      "name": "candidate",
+      "steps": [
+        {
+          "name": "Candidate after the same first-page 503: Load more remains available",
+          "slug": "first-page-503-retryable",
+          "status": "passed",
+          "screenshot": "first-page-503-retryable.png"
+        },
+        {
+          "name": "Candidate after retry: real seeded skill is rendered",
+          "slug": "retry-recovered",
+          "status": "passed",
+          "screenshot": "retry-recovered.png"
+        }
+      ]
+    }
+  ]
+}
